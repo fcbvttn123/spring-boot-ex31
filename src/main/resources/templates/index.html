@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table th:if="${appointmentList != null}">
+		<tr th:each="s :${appointmentList}">
+			<td th:text="${s.id}"></td>
+			<td th:text="${s.purpose}"></td>
+			<td th:text="${s.appointmentDate}"></td>
+			<td th:text="${s.appointmentTime}"></td>
+		</tr>
+	</table>
+	
+	<hr>
+	
+	<form method="post" action="/sendInfo" th:object="${appointment}">
+		<input type="hidden" name="id" th:field="*{id}"><br>
+		Purpose: <input type="text" name="purpose" th:field="*{purpose}"><br>
+		Appointment Date: <input type="text" name="appointmentDate" th:field="*{appointmentDate}"><br>
+		Appointment Time: <input type="text" name="appointmentTime" th:field="*{appointmentTime}"><br>
+		<input type="submit" value="Go!" />
+	</form>
+</body>
+</html>
